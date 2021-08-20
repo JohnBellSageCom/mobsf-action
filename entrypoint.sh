@@ -26,9 +26,12 @@ export MOBSF_API_KEY="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 64)"
 export MOBSF_URL="localhost:8000"
 
 cd /root/Mobile-Security-Framework-MobSF
-python3 manage.py makemigrations && \
-python3 manage.py makemigrations StaticAnalyzer && \
+python3 manage.py makemigration
+python3 manage.py makemigrations StaticAnalyze
 python3 manage.py migrate
+echo $JAVA_HOME
+which java
+cat /github/home/.MobSF/config.py
 gunicorn -b 127.0.0.1:8000 "mobsf.MobSF.wsgi:application" --workers=1 --threads=10 --timeout=1800 &
 
 # Wait to start MobSF
