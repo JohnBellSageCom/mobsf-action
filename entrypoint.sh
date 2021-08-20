@@ -27,7 +27,7 @@ export MOBSF_URL="localhost:8000"
 
 cd /root/Mobile-Security-Framework-MobSF
 echo $JAVA_HOME
-cat ~/.MobSF/config.py
+ls $JAVA_HOME/bin
 python3 manage.py makemigrations
 python3 manage.py makemigrations StaticAnalyze
 python3 manage.py migrate
