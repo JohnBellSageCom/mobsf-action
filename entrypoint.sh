@@ -25,6 +25,7 @@ fi
 export MOBSF_API_KEY="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 64)"
 export MOBSF_URL="localhost:8000"
 
+JAVA_HOME="/jdk-16.0.1"
 cd /root/Mobile-Security-Framework-MobSF
 echo $JAVA_HOME
 echo $(which java)
