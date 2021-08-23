@@ -25,6 +25,8 @@ fi
 export MOBSF_API_KEY="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 64)"
 export MOBSF_URL="localhost:8000"
 
+# Github passes in a JAVA_HOME env - referencing a file which is inaccessible via docker.
+# However, the base container sets up java and so we use the java setup in the base container
 JAVA_HOME="/jdk-16.0.1"
 cd /root/Mobile-Security-Framework-MobSF
 python3 manage.py makemigrations 2&>> manage.out && \
@@ -59,6 +61,8 @@ echo "[/api/v1/scan] Scan finisehd"
 echo "[/api/v1/report_json] Generate the json report"
 curl -X POST --url ${MOBSF_URL}/api/v1/report_json --data "hash=${HASH}" -H "Authorization:${MOBSF_API_KEY}" --output ${OUTPUT_FILE_NAME}.json
 echo "[/api/v1/report_json] JSON report generated"
+
+echo "::set-output json=$(cat ${OUTPUT_FILE_NAME}.json)"
 
 # Generate the pdf report.
 echo "[/api/v1/download_pdf] Generate the PDF report"

@@ -7,3 +7,6 @@ branding:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+outputs:
+  json:
+    descirption: 'The created MobSF report in json format'
