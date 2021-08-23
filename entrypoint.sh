@@ -62,7 +62,7 @@ echo "[/api/v1/report_json] Generate the json report"
 curl -X POST --url ${MOBSF_URL}/api/v1/report_json --data "hash=${HASH}" -H "Authorization:${MOBSF_API_KEY}" --output ${OUTPUT_FILE_NAME}.json
 echo "[/api/v1/report_json] JSON report generated"
 
-echo "::set-output json=$(cat ${OUTPUT_FILE_NAME}.json)"
+echo "::set-output name=json::$(cat ${OUTPUT_FILE_NAME}.json)"
 
 # Generate the pdf report.
 echo "[/api/v1/download_pdf] Generate the PDF report"
