@@ -9,4 +9,4 @@ runs:
   image: 'Dockerfile'
 outputs:
   json:
-    descirption: 'The created MobSF report in json format'
+    description: 'The created MobSF report in json format'
