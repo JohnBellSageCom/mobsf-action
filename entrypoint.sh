@@ -28,7 +28,7 @@ export MOBSF_URL="localhost:8000"
 # Github passes in a JAVA_HOME env - referencing a file which is inaccessible via docker.
 # However, the base container sets up java and so we use the java setup in the base container
 JAVA_HOME="/jdk-16.0.1"
-cd /root/Mobile-Security-Framework-MobSF
+cd /home/mobsf/Mobile-Security-Framework-MobSF
 python3 manage.py makemigrations 2&>> manage.out && \
 python3 manage.py makemigrations StaticAnalyzer 2&>> manage.out && \
 python3 manage.py migrate 2&>> manage.out
